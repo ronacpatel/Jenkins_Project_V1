@@ -19,11 +19,7 @@ pipeline {
                         dockerImage.push()
                     }
                 }
-            }
-        }
-    }
-}
-    stages {
+                stages {
         stage('Test') {
             steps {
                 sh 'node --version'
