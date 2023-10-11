@@ -3,7 +3,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("/home/ec2-user/users/ronak/jenkins_project_v1-main")
+       app = docker.build("ronacpatel/jenkins_project_v1-main")
     }
 
     stage('Test image') {
