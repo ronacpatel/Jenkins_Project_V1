@@ -6,10 +6,6 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'node --version'
-  
-
-        app.inside {
-            sh 'echo "Tests passed"'
         }
     }
 
