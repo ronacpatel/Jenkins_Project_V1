@@ -2,16 +2,16 @@ pipeline {
     agent {
         // Use any node with the label 'docker'
         label 'docker'
-    }
+            }
     stages {
-        stage('Build') {
+        stage('Build')
             steps {
                 // Build the image from the Dockerfile in the current directory
                 script {
                     def dockerImage = docker.build("my-image:${env.BUILD_ID}")
                 }
             }
-              stage('Push') {
+        stage('Push')
                 steps {
                 // Push the image to Docker Hub
                 script {
@@ -19,14 +19,15 @@ pipeline {
                         dockerImage.push()
                     }
                 }
-                stages {
+    
         stage('Test') {
             steps {
                 sh 'node --version'
         }
     }
     stage('Push image') {
-              docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
+              docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') 
+              {
             app.push("${env.BUILD_NUMBER}")
         }
     }
