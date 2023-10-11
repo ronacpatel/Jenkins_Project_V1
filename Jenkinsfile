@@ -1,12 +1,11 @@
-node {
-    def app
-
-    stage('Build image') {
-  
-       app = docker.build("ronacpatel/jenkins_project_v1-main")
+pipeline {
+    agent {
+        docker { image 'node:18.18.0-alpine3.18' }
     }
-
-    stage('Test image') {
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
   
 
         app.inside {
