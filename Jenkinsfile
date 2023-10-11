@@ -3,7 +3,7 @@ node {
 
     stage('Build image') {
   
-       app = docker.build("jenkins_project_v1)
+       app = docker.build("jenkins_project_v1")
     }
 
     stage('Test image') {
