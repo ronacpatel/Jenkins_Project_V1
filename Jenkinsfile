@@ -27,14 +27,17 @@ pipeline {
                 sh 'node --version'
         }
     }
-    stage('Push image') {
-              steps{
-              docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') {
-            app.push("${env.BUILD_NUMBER}")
-          }
+    
+       stage('Build image') {
+            steps {
+                echo 'Starting to build docker image'
+
+                script {
+                    def customImage = docker.build("my-image:${env.BUILD_ID}")
+                    customImage.push()
+                }
+            }
         }
+      }
     }
-   
-                 }
-              }
        
