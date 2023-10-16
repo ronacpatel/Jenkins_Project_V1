@@ -4,7 +4,7 @@ pipeline {
         label 'docker'
             }
     stages {
-        stage('Build') {
+        stage('Build')
             steps {
                 // Build the image from the Dockerfile in the current directory
                 script {
@@ -19,13 +19,14 @@ pipeline {
                         dockerImage.push()
                     }
                 }
-    
+            }
         stage('Test') {
             steps {
                 sh 'node --version'
         }
     }
-    stage('Push image') {
+    stage('Push image') 
+              steps{
               docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') 
               {
             app.push("${env.BUILD_NUMBER}")
@@ -37,5 +38,3 @@ pipeline {
            }
         }
     }
-}
-        }
