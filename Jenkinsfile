@@ -4,13 +4,13 @@ pipeline {
         label 'docker'
             }
     stages {
-        stage('Build')
+        stage('Build') {
             steps {
                 // Build the image from the Dockerfile in the current directory
                 script {
                     def dockerImage = docker.build("my-image:${env.BUILD_ID}")
-                }
-            }
+                    }
+                    }
         stage('Push')
                 steps {
                 // Push the image to Docker Hub
