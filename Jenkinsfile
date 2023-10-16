@@ -21,6 +21,7 @@ pipeline {
                     }
                 }
             }
+        }
         stage('Test') {
             steps {
                 sh 'node --version'
@@ -31,6 +32,7 @@ pipeline {
               docker.withRegistry('https://registry.hub.docker.com', 'dockerhub') 
               {
             app.push("${env.BUILD_NUMBER}")
+          }
         }
     }
       stage('Trigger ManifestUpdate') {
@@ -39,5 +41,3 @@ pipeline {
                  }
               }
             }
-        }
-    }
