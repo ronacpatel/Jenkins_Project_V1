@@ -11,6 +11,7 @@ pipeline {
                     def dockerImage = docker.build("my-image:${env.BUILD_ID}")
                     }
                     }
+        }
         stage('Push') {
                 steps {
                 // Push the image to Docker Hub
@@ -40,4 +41,3 @@ pipeline {
             }
         }
     }
-}
